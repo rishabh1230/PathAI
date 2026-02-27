@@ -1,0 +1,482 @@
+/* ================= GLOBAL ================= */
+
+body{
+margin:0;
+background:#020617;
+color:#e2e8f0;
+font-family:Inter, Arial, sans-serif;
+overflow-x:hidden;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container{
+
+width:90%;
+max-width:1500px;
+margin:auto;
+padding:40px;
+
+}
+
+
+/* ================= TITLE (ANIMATED GRADIENT) ================= */
+
+.title{
+
+font-size:48px;
+
+font-weight:800;
+
+margin-bottom:40px;
+
+background:linear-gradient(
+270deg,
+#60a5fa,
+#3b82f6,
+#2563eb,
+#60a5fa
+);
+
+background-size:400% 400%;
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:gradientMove 6s infinite linear;
+
+}
+
+
+/* Moving Gradient */
+
+@keyframes gradientMove{
+
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+
+}
+
+
+
+/* ================= CARDS ================= */
+
+.card{
+
+background:#0f172a;
+
+padding:30px;
+
+border-radius:18px;
+
+margin-bottom:30px;
+
+border:1px solid #1e293b;
+
+transition:0.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+/* Glow Animation */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+width:200%;
+
+height:200%;
+
+background:radial-gradient(
+circle,
+rgba(59,130,246,0.15),
+transparent 60%
+);
+
+top:-50%;
+left:-50%;
+
+animation:cardGlow 6s linear infinite;
+
+}
+
+
+@keyframes cardGlow{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+border-color:#3b82f6;
+
+box-shadow:0px 20px 40px rgba(37,99,235,0.3);
+
+}
+
+
+
+/* ================= GRID ================= */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+}
+
+
+
+/* ================= SOURCE CARDS ================= */
+
+.sourceCard{
+
+background:#0f172a;
+
+padding:25px;
+
+border-radius:18px;
+
+border:1px solid #1e293b;
+
+transition:0.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.sourceCard:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+border-color:#3b82f6;
+
+box-shadow:0px 20px 40px rgba(37,99,235,0.3);
+
+}
+
+
+
+/* ================= TAGS ================= */
+
+.tag{
+
+background:#1e293b;
+
+padding:8px 14px;
+
+border-radius:20px;
+
+margin:6px;
+
+display:inline-block;
+
+font-size:13px;
+
+transition:0.2s;
+
+}
+
+.tag:hover{
+
+background:#3b82f6;
+
+transform:scale(1.1);
+
+}
+
+
+
+/* ================= BUTTON ================= */
+
+.btn-main{
+
+width:100%;
+
+padding:20px;
+
+border-radius:14px;
+
+border:none;
+
+font-size:18px;
+
+cursor:pointer;
+
+font-weight:700;
+
+color:white;
+
+background:linear-gradient(
+90deg,
+#2563eb,
+#3b82f6
+);
+
+transition:0.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+/* Button Shine Animation */
+
+.btn-main::after{
+
+content:"";
+
+position:absolute;
+
+width:40%;
+
+height:100%;
+
+background:rgba(255,255,255,0.3);
+
+top:0;
+left:-60%;
+
+transform:skewX(-20deg);
+
+animation:shine 3s infinite;
+
+}
+
+@keyframes shine{
+
+0%{left:-60%;}
+100%{left:140%;}
+
+}
+
+
+.btn-main:hover{
+
+transform:scale(1.03);
+
+box-shadow:0px 10px 40px rgba(37,99,235,0.5);
+
+}
+
+
+
+/* ================= FILE UPLOAD ================= */
+
+.uploadBox{
+
+margin-top:20px;
+
+}
+
+.uploadBox input{
+
+display:none;
+
+}
+
+.uploadLabel{
+
+display:block;
+
+border:2px dashed #334155;
+
+border-radius:20px;
+
+padding:60px;
+
+text-align:center;
+
+cursor:pointer;
+
+font-size:20px;
+
+transition:0.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+/* Pulsing Border */
+
+.uploadLabel{
+
+animation:pulseBorder 2s infinite;
+
+}
+
+@keyframes pulseBorder{
+
+0%{border-color:#334155;}
+
+50%{border-color:#3b82f6;}
+
+100%{border-color:#334155;}
+
+}
+
+
+.uploadLabel:hover{
+
+transform:scale(1.02);
+
+background:#020617;
+
+}
+
+
+.fileCount{
+
+margin-top:10px;
+
+color:#22c55e;
+
+font-weight:700;
+
+}
+
+
+
+/* ================= INPUT ================= */
+
+.input{
+
+width:100%;
+
+padding:16px;
+
+margin-top:10px;
+
+background:#1e293b;
+
+border:1px solid #334155;
+
+color:white;
+
+border-radius:12px;
+
+font-size:15px;
+
+transition:0.3s;
+
+}
+
+.input:focus{
+
+border-color:#3b82f6;
+
+box-shadow:0px 0px 15px rgba(59,130,246,0.6);
+
+}
+
+
+
+/* ================= GRAPH ================= */
+
+.node{
+
+background:#2563eb;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:700;
+
+animation:nodePulse 2s infinite;
+
+}
+
+@keyframes nodePulse{
+
+0%{
+box-shadow:0 0 0px #2563eb;
+}
+
+50%{
+box-shadow:0 0 20px #2563eb;
+}
+
+100%{
+box-shadow:0 0 0px #2563eb;
+}
+
+}
+
+.nodeSmall{
+
+background:#1e293b;
+
+padding:10px 15px;
+
+border-radius:10px;
+
+border:1px solid #334155;
+
+transition:0.3s;
+
+}
+
+.nodeSmall:hover{
+
+transform:scale(1.1);
+
+border-color:#3b82f6;
+
+}
+
+
+
+/* ================= SCORE ================= */
+
+.score{
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#22c55e;
+
+animation:scoreGlow 2s infinite;
+
+}
+
+@keyframes scoreGlow{
+
+0%{color:#22c55e;}
+
+50%{color:#4ade80;}
+
+100%{color:#22c55e;}
+
+}
+
