@@ -12,23 +12,19 @@ overflow-x:hidden;
 /* ================= CONTAINER ================= */
 
 .container{
-
-width:90%;
+width:1350px;
 max-width:1500px;
 margin:auto;
 padding:40px;
-
 }
 
 
-/* ================= TITLE (ANIMATED GRADIENT) ================= */
+/* ================= TITLE ================= */
 
 .title{
 
 font-size:48px;
-
 font-weight:800;
-
 margin-bottom:40px;
 
 background:linear-gradient(
@@ -48,16 +44,12 @@ animation:gradientMove 6s infinite linear;
 
 }
 
-
-/* Moving Gradient */
-
 @keyframes gradientMove{
 
 0%{background-position:0% 50%;}
 100%{background-position:100% 50%;}
 
 }
-
 
 
 /* ================= CARDS ================= */
@@ -83,7 +75,7 @@ overflow:hidden;
 }
 
 
-/* Glow Animation */
+/* ✅ FIXED: Glow animation no longer blocks inputs */
 
 .card::before{
 
@@ -92,7 +84,6 @@ content:"";
 position:absolute;
 
 width:200%;
-
 height:200%;
 
 background:radial-gradient(
@@ -106,18 +97,16 @@ left:-50%;
 
 animation:cardGlow 6s linear infinite;
 
-}
+/* IMPORTANT FIX */
+pointer-events:none;
 
+}
 
 @keyframes cardGlow{
 
-0%{
-transform:rotate(0deg);
-}
+0%{ transform:rotate(0deg); }
 
-100%{
-transform:rotate(360deg);
-}
+100%{ transform:rotate(360deg); }
 
 }
 
@@ -133,7 +122,6 @@ box-shadow:0px 20px 40px rgba(37,99,235,0.3);
 }
 
 
-
 /* ================= GRID ================= */
 
 .grid{
@@ -146,7 +134,6 @@ repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
 
 }
-
 
 
 /* ================= SOURCE CARDS ================= */
@@ -180,7 +167,6 @@ box-shadow:0px 20px 40px rgba(37,99,235,0.3);
 }
 
 
-
 /* ================= TAGS ================= */
 
 .tag{
@@ -208,7 +194,6 @@ background:#3b82f6;
 transform:scale(1.1);
 
 }
-
 
 
 /* ================= BUTTON ================= */
@@ -246,8 +231,6 @@ overflow:hidden;
 }
 
 
-/* Button Shine Animation */
-
 .btn-main::after{
 
 content:"";
@@ -255,7 +238,6 @@ content:"";
 position:absolute;
 
 width:40%;
-
 height:100%;
 
 background:rgba(255,255,255,0.3);
@@ -286,20 +268,35 @@ box-shadow:0px 10px 40px rgba(37,99,235,0.5);
 }
 
 
+.btn-small{
+
+margin-top:10px;
+padding:10px 16px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+background:#1e293b;
+color:white;
+
+}
+
 
 /* ================= FILE UPLOAD ================= */
 
 .uploadBox{
 
 margin-top:20px;
+position:relative;
 
 }
 
-.uploadBox input{
 
+.fileInput{
 display:none;
-
 }
+
+
+/* ✅ FIXED Upload Area */
 
 .uploadLabel{
 
@@ -323,10 +320,11 @@ position:relative;
 
 overflow:hidden;
 
+/* IMPORTANT: allow clicks */
+pointer-events:auto;
+
 }
 
-
-/* Pulsing Border */
 
 .uploadLabel{
 
@@ -334,12 +332,11 @@ animation:pulseBorder 2s infinite;
 
 }
 
+
 @keyframes pulseBorder{
 
 0%{border-color:#334155;}
-
 50%{border-color:#3b82f6;}
-
 100%{border-color:#334155;}
 
 }
@@ -365,7 +362,6 @@ font-weight:700;
 }
 
 
-
 /* ================= INPUT ================= */
 
 .input{
@@ -388,7 +384,11 @@ font-size:15px;
 
 transition:0.3s;
 
+position:relative;
+z-index:5;
+
 }
+
 
 .input:focus{
 
@@ -397,7 +397,6 @@ border-color:#3b82f6;
 box-shadow:0px 0px 15px rgba(59,130,246,0.6);
 
 }
-
 
 
 /* ================= GRAPH ================= */
@@ -418,19 +417,14 @@ animation:nodePulse 2s infinite;
 
 @keyframes nodePulse{
 
-0%{
-box-shadow:0 0 0px #2563eb;
-}
+0%{ box-shadow:0 0 0px #2563eb; }
 
-50%{
-box-shadow:0 0 20px #2563eb;
-}
+50%{ box-shadow:0 0 20px #2563eb; }
 
-100%{
-box-shadow:0 0 0px #2563eb;
-}
+100%{ box-shadow:0 0 0px #2563eb; }
 
 }
+
 
 .nodeSmall{
 
@@ -446,6 +440,7 @@ transition:0.3s;
 
 }
 
+
 .nodeSmall:hover{
 
 transform:scale(1.1);
@@ -453,7 +448,6 @@ transform:scale(1.1);
 border-color:#3b82f6;
 
 }
-
 
 
 /* ================= SCORE ================= */
@@ -470,13 +464,11 @@ animation:scoreGlow 2s infinite;
 
 }
 
+
 @keyframes scoreGlow{
 
 0%{color:#22c55e;}
-
 50%{color:#4ade80;}
-
 100%{color:#22c55e;}
 
 }
-

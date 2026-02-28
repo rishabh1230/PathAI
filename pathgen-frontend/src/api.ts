@@ -1,24 +1,30 @@
+const API_URL = "http://localhost:8000/generate-paths/"
+
 export async function generatePaths(files, urls){
 
 const formData = new FormData()
 
-files.forEach(f=>{
-formData.append("files",f)
+// Add files
+files.forEach(file=>{
+formData.append("files",file)
 })
 
-urls.forEach(u=>{
-if(u.trim())
-formData.append("urls",u)
+// Add URLs
+urls.forEach(url=>{
+if(url.trim() !== ""){
+formData.append("urls",url)
+}
 })
 
-const res = await fetch(
-"http://127.0.0.1:8000/generate-paths/",
-{
+const res = await fetch(API_URL,{
 method:"POST",
 body:formData
-}
-)
+})
 
-return res.json()
+if(!res.ok){
+throw new Error("Server error")
+}
+
+return await res.json()
 
 }

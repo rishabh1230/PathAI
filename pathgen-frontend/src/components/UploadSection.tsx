@@ -1,6 +1,8 @@
 export default function UploadSection({
-files,setFiles,
-urls,setUrls,
+files,
+setFiles,
+urls,
+setUrls,
 submit
 }){
 
@@ -22,6 +24,7 @@ multiple
 onChange={(e)=>
 setFiles(Array.from(e.target.files || []))
 }
+className="fileInput"
 />
 
 <div className="uploadContent">
@@ -44,9 +47,7 @@ Drag and drop or click to browse
 
 {files.length > 0 && (
 <div className="fileCount">
-
 {files.length} files selected
-
 </div>
 )}
 
@@ -64,6 +65,7 @@ copy[i]=e.target.value
 setUrls(copy)
 }}
 className="input"
+placeholder="Enter URL..."
 />
 ))}
 
@@ -78,9 +80,7 @@ Add URL
 onClick={submit}
 className="btn-main"
 >
-
 Generate Paths
-
 </button>
 
 </div>
